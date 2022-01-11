@@ -105,6 +105,11 @@
             <artifactId>scala-library</artifactId>
             <version>2.10.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>17-ea+11</version>
+        </dependency>
     </dependencies>
 
     <build>

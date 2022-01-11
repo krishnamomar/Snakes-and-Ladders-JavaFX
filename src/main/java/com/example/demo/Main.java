@@ -8,6 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.Media;
+import java.nio.file.Paths;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -18,6 +21,7 @@ public class Main extends Application {
     static playerController pc;
     static player p1;
     static player p2;
+    static MediaPlayer mediaPlayer;
 
     @FXML
     ImageView blue;
@@ -27,6 +31,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         try {
+            BG_Music();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("startScreen.fxml"));
             Parent root = loader.load();
 //            pc = (playerController) loader.getController();
@@ -48,6 +53,16 @@ public class Main extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void BG_Music(){
+        String s = "Ludo king game bgm.mp3";
+        Media h = new Media(Paths.get(s).toUri().toString());
+        mediaPlayer = new MediaPlayer(h);
+        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setVolume(0.2);
+        mediaPlayer.play();
     }
 
     public static void startNewGame(boolean computer) {

@@ -22,11 +22,19 @@ import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.Random;
 import java.util.ResourceBundle;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.Media;
+import java.nio.file.Paths;
 
 import static java.lang.Thread.sleep;
 
 public class playerController {
     private int DiceValue;
+    static MediaPlayer SnakeHiss;
+    static MediaPlayer LadderSlide;
+    static MediaPlayer DiceRoll;
+    static MediaPlayer GotiSlide;
+    static MediaPlayer WinnerMusic;
 
     @FXML
     ImageView testDice;
@@ -70,6 +78,41 @@ public class playerController {
     private ImageView tok;
     boolean complete;
 
+    public void Snake_Music(){
+        String s = "snake.wav";
+        Media h = new Media(Paths.get(s).toUri().toString());
+        SnakeHiss = new MediaPlayer(h);
+        SnakeHiss.play();
+    }
+
+    public void LadderMusic(){
+        String s = "ladder.mp3";
+        Media h = new Media(Paths.get(s).toUri().toString());
+        LadderSlide = new MediaPlayer(h);
+        LadderSlide.play();
+    }
+
+    public void DiceMusic(){
+        String s = "dice_roll.wav";
+        Media h = new Media(Paths.get(s).toUri().toString());
+        DiceRoll = new MediaPlayer(h);
+        DiceRoll.play();
+    }
+
+    public void GotiMusic(){
+        String s = "piece_slide.mp3";
+        Media h = new Media(Paths.get(s).toUri().toString());
+        GotiSlide = new MediaPlayer(h);
+        GotiSlide.play();
+    }
+
+    public void WinningMusicEffect(){
+        String s = "winning.mp3";
+        Media h = new Media(Paths.get(s).toUri().toString());
+        WinnerMusic = new MediaPlayer(h);
+        WinnerMusic.play();
+    }
+
 
     public void moves(player p) throws InterruptedException {
         if (p.getCol().equals("blue")) {
@@ -90,7 +133,9 @@ public class playerController {
 
         SequentialTransition st = new SequentialTransition();
         for (int i = currentPosition + 1; i <= p.getPos(); i++) {
+//            GotiMusic();
             TranslateTransition translate = new TranslateTransition(Duration.seconds(0.25), tok);
+            GotiMusic();
 
             int xc = Game.Board.get(i - 1).get(0);
             int yc = Game.Board.get(i - 1).get(1);
@@ -110,7 +155,7 @@ public class playerController {
             ladder ld = Game.Ladders.get(p.getPos());
             int newPos = ld.end;
             System.out.println("Ladder ends at " + newPos);
-
+            LadderMusic();
             TranslateTransition translate = new TranslateTransition(Duration.seconds(0.25), tok);
 
             int xc = Game.Board.get(p.getPos()).get(0);
@@ -132,6 +177,7 @@ public class playerController {
             p.setPosSnakeOrLadder(newPos);
             ArrayList<ArrayList<Integer>> pts = snk.all_points;
             int n = pts.size();
+            Snake_Music();
             for(int i = 1; i < n; i++) {
                 TranslateTransition translate = new TranslateTransition(Duration.seconds(0.25), tok);
                 int xc = pts.get(i - 1).get(0);
@@ -156,6 +202,7 @@ public class playerController {
 
             public void run() {
                 Random r = new Random();
+                DiceMusic();
                 for (int i = 0; i < 15; i++) {
                     try {
                         val = r.nextInt(6) + 1;
@@ -234,6 +281,7 @@ public class playerController {
 
             public void run() {
                 Random r = new Random();
+                DiceMusic();
                 for (int i = 0; i < 15; i++) {
                     try {
                         val = r.nextInt(6) + 1;
@@ -317,9 +365,11 @@ public class playerController {
     public void getWinScreen(player winner) throws InterruptedException, IOException {
         sleep(5000);
         if(winner.getCol().equals("blue")) {
+            WinningMusicEffect();
             blueWin.setLayoutX(21);
             blueWin.setLayoutY(142);
         } else {
+            WinningMusicEffect();
             greenWin.setLayoutX(21);
             greenWin.setLayoutY(142);
         }
