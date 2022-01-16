@@ -56,7 +56,7 @@ public class Main extends Application {
     }
 
     public void BG_Music(){
-        String s = "Ludo king game bgm.mp3";
+        String s = "src\\main\\resources\\com\\example\\demo\\Ludo king game bgm.mp3";
         Media h = new Media(Paths.get(s).toUri().toString());
         mediaPlayer = new MediaPlayer(h);
         mediaPlayer.setAutoPlay(true);

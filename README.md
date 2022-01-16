@@ -5,9 +5,9 @@ The classic game, Snakes and Ladders, implemented using principles of OOPS and G
 <br>
 
 ## Run the game
-After installing all the necessary Libraries run the ```Main``` file located at
+After installing all the necessary Libraries run the ```demo.jar``` file located at
 
-    /Snakes-and-Ladders-JavaFX/src/main/java/com/example/demo/Main.java
+    /Snakes-and-Ladders-JavaFX/out/artifacts/demo_jar/demo.jar
 
 <br>
 

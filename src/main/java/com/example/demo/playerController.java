@@ -79,35 +79,35 @@ public class playerController {
     boolean complete;
 
     public void Snake_Music(){
-        String s = "snake.wav";
+        String s = "src\\main\\resources\\com\\example\\demo\\snake.wav";
         Media h = new Media(Paths.get(s).toUri().toString());
         SnakeHiss = new MediaPlayer(h);
         SnakeHiss.play();
     }
 
     public void LadderMusic(){
-        String s = "ladder.mp3";
+        String s = "src\\main\\resources\\com\\example\\demo\\ladder.mp3";
         Media h = new Media(Paths.get(s).toUri().toString());
         LadderSlide = new MediaPlayer(h);
         LadderSlide.play();
     }
 
     public void DiceMusic(){
-        String s = "dice_roll.wav";
+        String s = "src\\main\\resources\\com\\example\\demo\\dice_roll.wav";
         Media h = new Media(Paths.get(s).toUri().toString());
         DiceRoll = new MediaPlayer(h);
         DiceRoll.play();
     }
 
     public void GotiMusic(){
-        String s = "piece_slide.mp3";
+        String s = "src\\main\\resources\\com\\example\\demo\\piece_slide.mp3";
         Media h = new Media(Paths.get(s).toUri().toString());
         GotiSlide = new MediaPlayer(h);
         GotiSlide.play();
     }
 
     public void WinningMusicEffect(){
-        String s = "winning.mp3";
+        String s = "src\\main\\resources\\com\\example\\demo\\winning.mp3";
         Media h = new Media(Paths.get(s).toUri().toString());
         WinnerMusic = new MediaPlayer(h);
         WinnerMusic.play();
